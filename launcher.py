@@ -1,4 +1,4 @@
-class Assistant:
+class Launcher:
 
     def __init__(self):
         self.greet_user()

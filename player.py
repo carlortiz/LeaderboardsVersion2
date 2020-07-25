@@ -2,7 +2,7 @@ class Player:
 
     def __init__(self):
         self.name = self.get_player_name()
-        self.point_per_game = self.get_player_points_per_game()
+        self.points_per_game = self.get_player_points_per_game()
         # self.rebounds_per_game = self.get_player_rebounds_per_game()
         # self.get_player_assists_per_game = self.get_player_assists_per_game()
         # self.get_player_steals_per_game = self.get_player_steals_per_game()
