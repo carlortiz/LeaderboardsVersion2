@@ -1,15 +1,23 @@
+from player import Player
+
 class Launcher:
 
     def __init__(self):
-        self.greet_user()
-        self.explain_rules()
+        self.players = []
+        self.get_players()
 
-    def greet_user(self):
-        print("Hello. Welcome to the NBA/NBA2K Leaderboard App.")
-        print("This app lets you enter the stats of as many players desired.")
-        print("Then, it will rank each player in every major statistical category.")
+    def new_player(self):
+            new_player = Player()
+            return new_player
 
-    def explain_rules(self):
-        print("\nOnly 'yes', 'done', or 'quit' will be accepted as answers.")
-        print("Enter 'done' when you have entered all players.")
-        print("Enter 'quit' when finished.")
+    def get_players(self):
+       while True:
+               question = "\nWould you like to enter in a player?"
+               answer = str(input(question + "(yes/no): ")).lower()
+               if answer == 'yes':
+                   self.players.append(self.new_player())
+               elif answer == 'no':
+                   print("\nLEADERBOARDS - ")
+                   break
+               else:
+                   print("Enter yes/no only.")
