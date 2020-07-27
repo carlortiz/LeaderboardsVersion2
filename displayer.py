@@ -34,10 +34,11 @@ class Displayer:
 
     def display_points_leaderboard(self):
         print("POINTS LEADERBOARD: ")
-        for points_per_game in self.points_leaderboard:
-            for player in self.program.players:
+        for player in self.program.players:
+            for points_per_game in self.points_leaderboard:
                 if player.points_per_game == points_per_game:
                     print(player.name + " - " + points_per_game + " ppg")
+                    break
 
     def create_rebounds_leaderboard(self):
         for player in self.program.players:
@@ -47,10 +48,11 @@ class Displayer:
 
     def display_rebounds_leaderboard(self):
         print("\nREBOUNDS LEADERBOARD: ")
-        for rebounds_per_game in self.rebounds_leaderboard:
-            for player in self.program.players:
+        for player in self.program.players:
+            for rebounds_per_game in self.rebounds_leaderboard:
                 if player.rebounds_per_game == rebounds_per_game:
                     print(player.name + " - " + rebounds_per_game + " rpg")
+                    break
 
     def create_assists_leaderboard(self):
         for player in self.program.players:
@@ -60,10 +62,11 @@ class Displayer:
 
     def display_assists_leaderboard(self):
         print("\nASSISTS LEADERBOARD: ")
-        for assists_per_game in self.assists_leaderboard:
-            for player in self.program.players:
+        for player in self.program.players:
+            for assists_per_game in self.assists_leaderboard:
                 if player.assists_per_game == assists_per_game:
                     print(player.name + " - " + assists_per_game + " apg")
+                    break
 
     def create_steals_leaderboard(self):
         for player in self.program.players:
@@ -73,10 +76,11 @@ class Displayer:
 
     def display_steals_leaderboard(self):
         print("\nSTEALS LEADERBOARD: ")
-        for steals_per_game in self.steals_leaderboard:
-            for player in self.program.players:
+        for player in self.program.players:
+            for steals_per_game in self.steals_leaderboard:
                 if player.steals_per_game == steals_per_game:
                     print(player.name + " - " + steals_per_game + " spg")
+                    break
 
     def create_blocks_leaderboard(self):
         for player in self.program.players:
@@ -86,10 +90,12 @@ class Displayer:
 
     def display_blocks_leaderboard(self):
         print("\nBLOCKS LEADERBOARD: ")
-        for blocks_per_game in self.blocks_leaderboard:
-            for player in self.program.players:
+        for player in self.program.players:
+            for blocks_per_game in self.blocks_leaderboard:
                 if player.blocks_per_game == blocks_per_game:
                     print(player.name + " - " + blocks_per_game + " bpg")
+                    break
+
 
 
 
