@@ -1,42 +1,72 @@
-from player import Player
-from leaderboard import Leaderboard
+# Leaderboards Version 2
+players = []
 
-class Main:
+class Player:
 
-    def __innit__(self):
-        players = []
+    def __init__(self):
+        self.name = input("Player Name: ")
+        self.points = self.get_averages("Points Per Game: ")
+        self.rebounds = self.get_averages("Rebounds Per Game: ")
+        self.assists = self.get_averages("Assists Per Game: ")
+        self.steals = self.get_averages("Steals Per Game: ")
+        self.blocks = self.get_averages("Blocks Per Game: ")
+        self.field_goal = self.get_averages("Field Goal Percentage: ")
+        self.three_point = self.get_averages("Three Point Percentage: ")
+        self.free_throw = self.get_averages("Free Throw Percentage: ")
 
-        print("\nHello. Welcome to the Basketball Leaderboard App.")
-        print("This app lets you enter the stats of as many players needed.")
-        print("Then, it will rank each player in every major statistical category.")
+        # Adds player instance to list of players
+        players.append(self)
 
-        self.get_players()
-        self.get_leaderboards()
-
-    def new_player(self):
-        new_player = Player()
-        return new_player
-
-    def get_players(self):
+    def get_averages(self, question):
         while True:
-            question = "\nWould you like to enter in a player?"
-            answer = str(input(question + "(y/n): ")).lower()
-            if answer == 'y':
-                self.players.append(self.new_player())
-            elif answer == 'n':
-                print("\nTHE LEADERBOARDS - ")
-                break
+            value = float(input(question))
+            if value >= 0:
+                return str(value)
             else:
-                print("Enter y/n only.")
+                print("Enter numbers above or equal to 0 only.")
 
-    def new_leaderboard(self):
-        new_leaderboard = Leaderboard()
-        return new_leaderboard
+class Leaderboard:
 
-    def make_leaderboards(self):
-        statistic = []
+    def __init__(self, category, abbreviation):
+        self.category = category
+        self.abbreviation = abbreviation
 
-        for player in self.Main.player:
+        self.data = self.get_data(self.category)
+        self.data = sorted(self.data, key=lambda x: x[self.category], reverse=True)
+
+        self.display()
+
+    def get_data(self, category):
+        data = []
+
+        for player in players:
+            data.append({'name': player.name, category: getattr(player, category)})
+        return data
+
+    def display(self):
+        print("\n%s LEADERBOARD: " % (self.category.upper()))
+        for element in self.data:
+            position = self.data.index(element) + 1
+            name = element['name']
+            average = element[self.category]
+            print("{}. {} - {} {}".format(position, name, average, self.abbreviation))
 
 
+while True:
+    question = "\nWould you like to enter in a player?"
+    answer = str(input(question + "(yes/no): ")).lower()
+    if answer == "yes":
+        player = Player()
+    elif answer == "no":
+        break;
+    else:
+        print("Enter yes/no only.")
 
+points = Leaderboard("points", "PPG")
+rebounds = Leaderboard("rebounds", "RPG")
+assists = Leaderboard("assists", "APG")
+steals = Leaderboard("steals", "SPG")
+blocks = Leaderboard("blocks", "BPG")
+field_goal = Leaderboard("field_goal", "FG%")
+three_point = Leaderboard("three_point", "3P%")
+free_throw = Leaderboard("free_throw", "FT%")
