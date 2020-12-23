@@ -2,7 +2,7 @@
 
 # General Information
 
-This is an app creates a leaderboard for the five major stats of basketball players. The user may enter in as many players as possible.
+This is an app creates a leaderboard for the major stats of basketball players. The user may enter in as many players as possible.
 
 # Technologies
 
